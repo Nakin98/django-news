@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ block.super }} - Homepage {% endblock head_title %}
+
+{% block content %}
+
+    <br>
+    
+        <div class="row px-4 ">
+                {% for x in api.articles %}
+                            <div class=" card bg-dark box-shadow m-4 p-2" style='width:19rem;'  > 
+                                <img class="card-img-top" src="{{x.urlToImage}}" alt="{{x.source.name}}" >
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-light">{{ x.title }}</h5>
+                                    <p class="card-text text-light">{{x.content|truncatechars:150}}</p>
+                                    <button type="button" onclick="window.location.href='{{x.url}}'"class="btn btn-light card-button">Leggi l'articolo</button>
+                                </div>
+                            </div>           
+                {% endfor %}
+            </div>
+    
+{% endblock content %}
